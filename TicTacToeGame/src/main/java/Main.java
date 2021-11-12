@@ -1,18 +1,18 @@
 import java.util.*;
 
 public class Main {
-    static List<Integer> playerPosition = new ArrayList<Integer>();
-    static List<Integer> cpuPosition = new ArrayList<Integer>();
+    static List<Integer> playerPosition = new ArrayList<>();
+    static List<Integer> cpuPosition = new ArrayList<>();
     public static String player = "Player";
     static String winner = "Saikumar";
 
     public static void main(String[] args) {
-        char[][] gameBorad = {{' ', '|', ' ', '|', ' '},
+        char[][] gameBoard = {{' ', '|', ' ', '|', ' '},
                 {'-', '+', '-', '+', '-'},
                 {' ', '|', ' ', '|', ' '},
                 {'-', '+', '-', '+', '-'},
                 {' ', '|', ' ', '|', ' '}};
-        printGameBorad(gameBorad);
+        printGameBoard(gameBoard);
 
         while (true) {
             System.out.println("Enter the Placement from (1-9)");
@@ -22,8 +22,8 @@ public class Main {
                 System.out.println("Enter unoccupied position");
                 playerPos = scanner.nextInt();
             }
-            placePiece(gameBorad, playerPos, player);
-            printGameBorad(gameBorad);
+            placePiece(gameBoard, playerPos, player);
+            printGameBoard(gameBoard);
             winner = checkWinner();
             if(winner.equals("Congratulations player wins") || winner.equals("Sorry!! CPU wins better luck next time") || winner.equals("CAT")){
                 System.out.println(winner);
@@ -36,8 +36,8 @@ public class Main {
                 System.out.println("Enter unoccupied position");
                 cpuPos = random.nextInt(9) + 1;
             }
-            placePiece(gameBorad, cpuPos, "cpu");
-            printGameBorad(gameBorad);
+            placePiece(gameBoard, cpuPos, "cpu");
+            printGameBoard(gameBoard);
             winner = checkWinner();
             if(winner.equals("Congratulations player wins") || winner.equals("Sorry!! CPU wins better luck next time") || winner.equals("CAT")){
                 System.out.println(winner);
@@ -46,8 +46,8 @@ public class Main {
         }
     }
 
-    public static void printGameBorad(char[][] gameBorad) {
-        for (char[] row : gameBorad) {
+    public static void printGameBoard(char[][] gameBoard) {
+        for (char[] row : gameBoard) {
             for (char c : row) {
                 System.out.print(c);
             }
@@ -99,16 +99,16 @@ public class Main {
     }
 
     public static String checkWinner() {
-        List topRow = Arrays.asList(1, 2, 3);
-        List midRow = Arrays.asList(4, 5, 6);
-        List botRow = Arrays.asList(7, 8, 9);
-        List topCol = Arrays.asList(1, 4, 7);
-        List midCol = Arrays.asList(2, 5, 8);
-        List botCol = Arrays.asList(3, 6, 9);
-        List cross1 = Arrays.asList(1, 5, 9);
-        List cross2 = Arrays.asList(3, 5, 7);
+        List<Integer> topRow = Arrays.asList(1, 2, 3);
+        List<Integer> midRow = Arrays.asList(4, 5, 6);
+        List<Integer> botRow = Arrays.asList(7, 8, 9);
+        List<Integer> topCol = Arrays.asList(1, 4, 7);
+        List<Integer> midCol = Arrays.asList(2, 5, 8);
+        List<Integer> botCol = Arrays.asList(3, 6, 9);
+        List<Integer> cross1 = Arrays.asList(1, 5, 9);
+        List<Integer> cross2 = Arrays.asList(3, 5, 7);
 
-        List<List> winner = new ArrayList<List>();
+        List<List> winner = new ArrayList<>();
         winner.add(topRow);
         winner.add(midRow);
         winner.add(botRow);
